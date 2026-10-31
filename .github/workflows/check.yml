@@ -1,0 +1,20 @@
+name: Check
+
+on:
+  pull_request:
+  push:
+    branches-ignore: [index]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - name: Validate, test and index
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: scripts/check.sh "$(scripts/fetch-cli.sh)"
