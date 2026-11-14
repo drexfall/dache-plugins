@@ -1,0 +1,44 @@
+{
+  "deployments": [
+    {
+      "uid": "dpl_fakeDeploy000000000002",
+      "name": "acme-docs",
+      "url": "acme-docs-b2c3d4.vercel.app",
+      "created": 1793093400120,
+      "createdAt": 1793093400120,
+      "buildingAt": 1793093402000,
+      "state": "BUILDING",
+      "readyState": "BUILDING",
+      "target": "production",
+      "projectId": "prj_fakeDocs00000000000001",
+      "inspectorUrl": "https://vercel.com/acme/acme-docs/fakeDeploy2",
+      "meta": {
+        "githubCommitRef": "main",
+        "githubCommitMessage": "Add search page"
+      }
+    },
+    {
+      "uid": "dpl_fakeDeploy000000000001",
+      "name": "acme-docs",
+      "url": "acme-docs-a1b2c3.vercel.app",
+      "created": 1793000000000,
+      "createdAt": 1793000000000,
+      "buildingAt": 1793000001000,
+      "ready": 1793000060000,
+      "state": "READY",
+      "readyState": "READY",
+      "target": "production",
+      "projectId": "prj_fakeDocs00000000000001",
+      "inspectorUrl": "https://vercel.com/acme/acme-docs/fakeDeploy1",
+      "meta": {
+        "githubCommitRef": "main",
+        "githubCommitMessage": "Update install guide"
+      }
+    }
+  ],
+  "pagination": {
+    "count": 2,
+    "next": 1792999999999,
+    "prev": null
+  }
+}

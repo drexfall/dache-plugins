@@ -1,0 +1,36 @@
+{
+  "projects": [
+    {
+      "accountId": "team_fakeTeamId000000001",
+      "id": "prj_fakeDocs00000000000001",
+      "name": "acme-docs",
+      "framework": "nextjs",
+      "alias": [
+        {
+          "domain": "docs.acme.example",
+          "environment": "production",
+          "target": "PRODUCTION"
+        },
+        {
+          "domain": "acme-docs.vercel.app",
+          "environment": "production",
+          "target": "PRODUCTION"
+        }
+      ],
+      "link": {
+        "type": "github",
+        "org": "acme",
+        "repo": "docs",
+        "repoId": 1000001,
+        "productionBranch": "main"
+      },
+      "createdAt": 1767225600000,
+      "updatedAt": 1793093400000
+    }
+  ],
+  "pagination": {
+    "count": 1,
+    "next": 1793000000000,
+    "prev": null
+  }
+}

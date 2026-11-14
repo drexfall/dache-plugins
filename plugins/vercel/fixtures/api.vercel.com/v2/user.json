@@ -1,0 +1,9 @@
+{
+  "user": {
+    "id": "Xa1fakeUserId0000000001",
+    "email": "dev@example.com",
+    "name": "Dev Example",
+    "username": "devexample",
+    "defaultTeamId": "team_fakeTeamId000000001"
+  }
+}

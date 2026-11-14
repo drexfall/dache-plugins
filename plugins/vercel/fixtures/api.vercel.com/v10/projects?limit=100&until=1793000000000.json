@@ -1,0 +1,23 @@
+{
+  "projects": [
+    {
+      "accountId": "team_fakeTeamId000000001",
+      "id": "prj_fakeBlog00000000000002",
+      "name": "acme-blog",
+      "alias": [
+        {
+          "domain": "acme-blog.vercel.app",
+          "environment": "production",
+          "target": "PRODUCTION"
+        }
+      ],
+      "createdAt": 1767225600000,
+      "updatedAt": 1792000000000
+    }
+  ],
+  "pagination": {
+    "count": 1,
+    "next": null,
+    "prev": 1793000000000
+  }
+}
