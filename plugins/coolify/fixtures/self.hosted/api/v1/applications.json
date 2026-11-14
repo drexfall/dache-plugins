@@ -1,0 +1,8 @@
+[
+  {
+    "uuid": "a1",
+    "name": "blog",
+    "fqdn": "https://blog.lan",
+    "status": "running:healthy"
+  }
+]
