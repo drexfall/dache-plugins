@@ -17,4 +17,15 @@ for plugin in plugins/*/; do
   "$cli" test "$plugin/manifest.json" --fixtures "$plugin/fixtures" "${settings[@]}"
 done
 
-"$cli" index . --out "${RUNNER_TEMP:-/tmp}/dache-index-check"
+index="${RUNNER_TEMP:-/tmp}/dache-index-check"
+"$cli" index . --out "$index"
+
+# The check Publish makes, run before merging: a version already on the index branch must not change.
+if git fetch -q --depth=1 origin index 2> /dev/null; then
+  for file in $(cd "$index" && find plugins -name '*.json'); do
+    if git cat-file -e "FETCH_HEAD:$file" 2> /dev/null && ! git show "FETCH_HEAD:$file" | cmp -s - "$index/$file"; then
+      echo "::error::$file is already published with different content; bump the plugin's version"
+      exit 1
+    fi
+  done
+fi
