@@ -1,0 +1,12 @@
+{
+  "nextLink": null,
+  "data": [
+    {
+      "id": 800003,
+      "friendlyName": "Nightly job",
+      "url": null,
+      "status": "PAUSED",
+      "type": "HEARTBEAT"
+    }
+  ]
+}
