@@ -1,0 +1,20 @@
+{
+  "data": [
+    {
+      "id": "qemu/100",
+      "vmid": 100,
+      "name": "web",
+      "node": "pve1",
+      "type": "qemu",
+      "status": "running"
+    },
+    {
+      "id": "lxc/101",
+      "vmid": 101,
+      "name": "db",
+      "node": "pve2",
+      "type": "lxc",
+      "status": "stopped"
+    }
+  ]
+}
