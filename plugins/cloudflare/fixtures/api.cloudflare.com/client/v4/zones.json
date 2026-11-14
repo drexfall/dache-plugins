@@ -1,0 +1,16 @@
+{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": [
+    {
+      "id": "fedcba9876543210fedcba9876543210",
+      "name": "acme.example",
+      "status": "active",
+      "account": {
+        "id": "0123456789abcdef0123456789abcdef",
+        "name": "Acme Inc"
+      }
+    }
+  ]
+}

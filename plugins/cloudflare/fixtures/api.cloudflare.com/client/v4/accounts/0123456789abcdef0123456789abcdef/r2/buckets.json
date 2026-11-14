@@ -1,0 +1,12 @@
+{
+  "success": true,
+  "result": {
+    "buckets": [
+      {
+        "name": "acme-assets",
+        "creation_date": "2026-03-01T10:00:00.000Z",
+        "location": "WEUR"
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": [
+    {
+      "id": "rec-www",
+      "type": "CNAME",
+      "name": "www.acme.example",
+      "content": "acme-blog.pages.dev",
+      "proxied": true,
+      "ttl": 1
+    },
+    {
+      "id": "rec-apex",
+      "type": "A",
+      "name": "acme.example",
+      "content": "203.0.113.10",
+      "proxied": false,
+      "ttl": 300
+    }
+  ]
+}

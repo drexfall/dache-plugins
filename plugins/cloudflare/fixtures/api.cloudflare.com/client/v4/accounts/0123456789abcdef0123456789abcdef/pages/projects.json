@@ -1,0 +1,32 @@
+{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": [
+    {
+      "id": "pages-fake-blog-0001",
+      "name": "acme-blog",
+      "subdomain": "acme-blog.pages.dev",
+      "domains": [
+        "acme-blog.pages.dev",
+        "www.acme.example"
+      ],
+      "production_branch": "main",
+      "source": {
+        "type": "github",
+        "config": {
+          "owner": "acme",
+          "repo_name": "blog"
+        }
+      }
+    },
+    {
+      "id": "pages-fake-docs-0002",
+      "name": "acme-docs",
+      "subdomain": "acme-docs.pages.dev",
+      "domains": [
+        "acme-docs.pages.dev"
+      ]
+    }
+  ]
+}

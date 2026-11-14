@@ -1,0 +1,40 @@
+{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": [
+    {
+      "id": "dep-fake-0002",
+      "short_id": "dep0002",
+      "url": "https://dep0002.acme-blog.pages.dev",
+      "created_on": "2026-10-27T09:30:00.123456Z",
+      "latest_stage": {
+        "name": "build",
+        "status": "failure"
+      },
+      "deployment_trigger": {
+        "type": "github:push",
+        "metadata": {
+          "branch": "main",
+          "commit_message": "Add launch post"
+        }
+      }
+    },
+    {
+      "id": "dep-fake-0001",
+      "short_id": "dep0001",
+      "url": "https://dep0001.acme-blog.pages.dev",
+      "created_on": "2026-10-26T08:00:00Z",
+      "latest_stage": {
+        "name": "deploy",
+        "status": "success"
+      },
+      "deployment_trigger": {
+        "type": "ad_hoc",
+        "metadata": {
+          "branch": "main"
+        }
+      }
+    }
+  ]
+}

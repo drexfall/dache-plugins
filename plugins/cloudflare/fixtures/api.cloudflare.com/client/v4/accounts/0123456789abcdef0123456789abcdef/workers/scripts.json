@@ -1,0 +1,24 @@
+{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": [
+    {
+      "id": "acme-api",
+      "created_on": "2026-01-10T10:00:00Z",
+      "modified_on": "2026-10-20T16:45:00Z",
+      "routes": [
+        {
+          "id": "route-1",
+          "pattern": "api.acme.example/*",
+          "script": "acme-api"
+        }
+      ]
+    },
+    {
+      "id": "acme-cron",
+      "created_on": "2026-02-01T10:00:00Z",
+      "modified_on": "2026-02-01T10:00:00Z"
+    }
+  ]
+}

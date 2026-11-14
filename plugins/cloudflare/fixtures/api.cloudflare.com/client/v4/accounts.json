@@ -1,0 +1,12 @@
+{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": [
+    {
+      "id": "0123456789abcdef0123456789abcdef",
+      "name": "Acme Inc",
+      "type": "standard"
+    }
+  ]
+}

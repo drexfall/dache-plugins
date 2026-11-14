@@ -1,0 +1,32 @@
+{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": [
+    {
+      "id": "pack-universal-1",
+      "type": "universal",
+      "hosts": [
+        "acme.example",
+        "*.acme.example"
+      ],
+      "status": "active",
+      "certificates": [
+        {
+          "id": "cert-1",
+          "status": "active",
+          "expires_on": "2027-01-15T12:00:00Z"
+        }
+      ]
+    },
+    {
+      "id": "pack-advanced-2",
+      "type": "advanced",
+      "hosts": [
+        "shop.acme.example"
+      ],
+      "status": "validation_timed_out",
+      "certificates": []
+    }
+  ]
+}
