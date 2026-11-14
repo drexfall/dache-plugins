@@ -1,0 +1,8 @@
+{
+  "account": {
+    "email": "dev@acme.dev",
+    "team": {
+      "name": "Acme"
+    }
+  }
+}

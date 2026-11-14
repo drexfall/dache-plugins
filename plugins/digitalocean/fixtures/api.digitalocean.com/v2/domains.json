@@ -1,0 +1,8 @@
+{
+  "domains": [
+    {
+      "name": "acme.dev",
+      "ttl": 1800
+    }
+  ]
+}

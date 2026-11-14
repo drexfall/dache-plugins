@@ -1,0 +1,24 @@
+{
+  "apps": [
+    {
+      "id": "app-1",
+      "live_url": "https://acme-web-x1y2.ondigitalocean.app",
+      "spec": {
+        "name": "acme-web",
+        "domains": [
+          {
+            "domain": "www.acme.dev"
+          }
+        ],
+        "services": [
+          {
+            "github": {
+              "repo": "acme/web",
+              "branch": "main"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "droplets": [
+    {
+      "id": 301,
+      "name": "api-1",
+      "status": "active",
+      "region": {
+        "slug": "fra1"
+      },
+      "networks": {
+        "v4": [
+          {
+            "ip_address": "10.110.0.2",
+            "type": "private"
+          },
+          {
+            "ip_address": "203.0.113.7",
+            "type": "public"
+          }
+        ]
+      }
+    }
+  ]
+}

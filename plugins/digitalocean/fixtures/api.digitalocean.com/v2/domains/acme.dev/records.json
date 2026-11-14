@@ -1,0 +1,16 @@
+{
+  "domain_records": [
+    {
+      "id": 11,
+      "type": "A",
+      "name": "@",
+      "data": "203.0.113.7"
+    },
+    {
+      "id": 12,
+      "type": "CNAME",
+      "name": "www",
+      "data": "acme-web-x1y2.ondigitalocean.app."
+    }
+  ]
+}
