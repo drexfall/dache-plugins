@@ -31,7 +31,7 @@ Review before merging:
 
 ## Publishing
 
-Merging to `main` runs Publish: it checks everything again, builds `index.json`, signs it, and force-pushes the result to the `index` branch:
+Merging to `main` runs Publish: it checks everything again, builds `index.json`, signs it, and adds the result to the `index` branch as a new commit. Earlier versions' manifests stay on the branch, and its history records every publish. A version, once published, can't change: Check and Publish both fail if a manifest differs from the one already published under its version.
 
 ```
 index.json                     plugins, versions, SHA-256 of each manifest, hosts, auth, capabilities
