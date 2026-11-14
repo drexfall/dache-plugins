@@ -19,7 +19,7 @@ scripts/                     what CI runs
 
 1. Write the manifest following the plugin author's guide in the Dache repo (`docs/writing-a-plugin.md`). Set `publisher`, `dashboardUrl`, `tokenUrl` and `tokenHelp`.
 2. Bump `version` (MAJOR.MINOR.PATCH) on every change. The app offers an update when the version is higher than the one it has.
-3. Record fixtures for at least the token check and each list, so `dache-plugin test` passes offline.
+3. Record fixtures for at least the token check and each list, so `dache-plugin test` passes offline. CI fails a plugin without a `fixtures` directory.
 4. Open a pull request. The Check workflow validates every manifest, runs fixture tests and builds an unsigned index.
 
 Review before merging:
