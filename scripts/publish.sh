@@ -19,6 +19,15 @@ else
   git init -q -b index "$branch"
 fi
 
+# A published version is immutable: the app pins its SHA-256 and won't offer it again, so changed bytes under an
+# existing version would either break installs or slip past review. Changes need a new version.
+for file in $(cd "$out" && find plugins -name '*.json'); do
+  if [ -f "$branch/$file" ] && ! cmp -s "$out/$file" "$branch/$file"; then
+    echo "::error::$file is already published with different content; bump the plugin's version" >&2
+    exit 1
+  fi
+done
+
 cp -R "$out"/. "$branch"/
 cd "$branch"
 git add -A
