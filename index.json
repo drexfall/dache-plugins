@@ -1,0 +1,164 @@
+{
+    "indexVersion": 1,
+    "serial": 1794646577,
+    "plugins": [
+        {
+            "id": "cloudflare",
+            "name": "Cloudflare",
+            "version": "1.2.0",
+            "publisher": "Dache",
+            "path": "plugins/cloudflare/1.2.0.json",
+            "sha256": "0e39632b073f4f31f3dc110708c5fcc476bb5a40817c808b91d47d2acc17e9b6",
+            "hosts": [
+                "api.cloudflare.com"
+            ],
+            "auth": {
+                "type": "bearer"
+            },
+            "capabilities": [
+                "DOMAINS",
+                "DNS",
+                "SITES",
+                "DEPLOYMENTS",
+                "WORKERS",
+                "SERVICES"
+            ]
+        },
+        {
+            "id": "coolify",
+            "name": "Coolify",
+            "version": "1.0.0",
+            "publisher": "Dache",
+            "path": "plugins/coolify/1.0.0.json",
+            "sha256": "04af0daaa00a66b84b4bb02e0226d255c85e6e8b2087d839ebc78494243afb5b",
+            "hosts": [
+                "self.hosted"
+            ],
+            "auth": {
+                "type": "bearer"
+            },
+            "capabilities": [
+                "SERVERS",
+                "SERVICES"
+            ]
+        },
+        {
+            "id": "digitalocean",
+            "name": "DigitalOcean",
+            "version": "1.2.0",
+            "publisher": "Dache",
+            "path": "plugins/digitalocean/1.2.0.json",
+            "sha256": "693d1e9e9cd2774f41900765328e697c695522582a126eecba2d745bea814aa0",
+            "hosts": [
+                "api.digitalocean.com"
+            ],
+            "auth": {
+                "type": "bearer"
+            },
+            "capabilities": [
+                "SERVERS",
+                "SITES",
+                "DEPLOYMENTS",
+                "DOMAINS",
+                "DNS",
+                "BILLING"
+            ]
+        },
+        {
+            "id": "github",
+            "name": "GitHub",
+            "version": "1.2.0",
+            "publisher": "Dache",
+            "path": "plugins/github/1.2.0.json",
+            "sha256": "b0edff68b1e333b491e640cd58ea0b94c852082e1af723689eee4b8a056a7a6e",
+            "hosts": [
+                "api.github.com"
+            ],
+            "auth": {
+                "type": "bearer"
+            },
+            "capabilities": [
+                "CI",
+                "SERVICES"
+            ]
+        },
+        {
+            "id": "netlify",
+            "name": "Netlify",
+            "version": "1.2.0",
+            "publisher": "Dache",
+            "path": "plugins/netlify/1.2.0.json",
+            "sha256": "9fded3ee515b7270f1a9de9a0f570850354d9c1d672b4e2da9a323358e7566da",
+            "hosts": [
+                "api.netlify.com"
+            ],
+            "auth": {
+                "type": "bearer"
+            },
+            "capabilities": [
+                "SITES",
+                "DEPLOYMENTS",
+                "DOMAINS",
+                "DNS",
+                "SERVICES"
+            ]
+        },
+        {
+            "id": "proxmox",
+            "name": "Proxmox VE",
+            "version": "1.0.0",
+            "publisher": "Dache",
+            "path": "plugins/proxmox/1.0.0.json",
+            "sha256": "fe3bc140ceff6f95abd010ecb1b01b2b407af44fcc24735d9b747e48fcdc6495",
+            "hosts": [
+                "self.hosted"
+            ],
+            "auth": {
+                "type": "header",
+                "name": "Authorization",
+                "prefix": "PVEAPIToken="
+            },
+            "capabilities": [
+                "SERVERS"
+            ]
+        },
+        {
+            "id": "uptimerobot",
+            "name": "UptimeRobot",
+            "version": "1.2.0",
+            "publisher": "Dache",
+            "path": "plugins/uptimerobot/1.2.0.json",
+            "sha256": "975a6cab49b019677ec2a15b8d1ee9f8477cb1081c766ead0870a662b9dd7b81",
+            "hosts": [
+                "api.uptimerobot.com"
+            ],
+            "auth": {
+                "type": "bearer"
+            },
+            "capabilities": [
+                "MONITORS"
+            ]
+        },
+        {
+            "id": "vercel",
+            "name": "Vercel",
+            "version": "1.3.0",
+            "publisher": "Dache",
+            "path": "plugins/vercel/1.3.0.json",
+            "sha256": "36f5c2e27ae325b70b53305a9f02ab0c334a91f87959f514ec32c13d728111a0",
+            "hosts": [
+                "api.vercel.com"
+            ],
+            "auth": {
+                "type": "bearer"
+            },
+            "capabilities": [
+                "SITES",
+                "DEPLOYMENTS",
+                "DOMAINS",
+                "DNS",
+                "SERVICES"
+            ]
+        }
+    ]
+}

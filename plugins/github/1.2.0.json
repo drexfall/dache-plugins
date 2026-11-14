@@ -1,0 +1,180 @@
+{
+  "$schema": "../../manifest.schema.json",
+  "manifestVersion": 1,
+  "id": "github",
+  "name": "GitHub",
+  "version": "1.2.0",
+  "publisher": "Dache",
+  "dashboardUrl": "https://github.com",
+  "tokenUrl": "https://github.com/settings/personal-access-tokens/new",
+  "tokenHelp": "Use a fine-grained token with Metadata, Actions and Deployments on the repos you pick. Without Actions or Deployments, only those pages stay empty. To re-run workflows, give Actions read and write.",
+  "hosts": ["api.github.com"],
+  "auth": { "type": "bearer" },
+  "capabilities": ["CI", "SERVICES"],
+  "validate": {
+    "request": {
+      "url": "https://api.github.com/user",
+      "headers": { "Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28" }
+    },
+    "displayName": "login"
+  },
+  "resources": [
+    {
+      "kind": "service",
+      "service": { "id": "repository", "label": "Repositories" },
+      "permission": "Metadata",
+      "request": {
+        "url": "https://api.github.com/user/repos",
+        "query": { "sort": "pushed" },
+        "headers": { "Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28" },
+        "paging": { "type": "link", "sizeParam": "per_page", "size": 100, "maxPages": 3 }
+      },
+      "fields": {
+        "nativeId": "id",
+        "name": "full_name",
+        "webUrl": "html_url",
+        "detail": "language",
+        "updatedAt": "pushed_at | date"
+      }
+    },
+    {
+      "kind": "ciRun",
+      "permission": "Actions",
+      "optional": true,
+      "forEach": {
+        "request": {
+          "url": "https://api.github.com/user/repos",
+          "query": { "sort": "pushed", "per_page": "30" },
+          "headers": { "Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28" }
+        }
+      },
+      "request": {
+        "url": "https://api.github.com/repos/{owner.login}/{name}/actions/runs",
+        "query": { "per_page": "10" },
+        "headers": { "Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28" }
+      },
+      "items": "workflow_runs",
+      "fields": {
+        "nativeId": "id",
+        "webUrl": "html_url",
+        "repoFullName": "^.full_name",
+        "repoUrl": "^.html_url",
+        "workflowName": "name",
+        "branch": "head_branch",
+        "status": "conclusion | default:running",
+        "createdAt": "created_at | date"
+      },
+      "statusMap": {
+        "success": "SUCCESS",
+        "neutral": "SUCCESS",
+        "failure": "FAILED",
+        "timed_out": "FAILED",
+        "startup_failure": "FAILED",
+        "cancelled": "CANCELLED",
+        "skipped": "CANCELLED",
+        "stale": "CANCELLED",
+        "action_required": "BUILDING",
+        "running": "BUILDING"
+      }
+    },
+    {
+      "kind": "service",
+      "service": { "id": "deployment", "label": "Deployments" },
+      "permission": "Deployments",
+      "optional": true,
+      "forEach": {
+        "request": {
+          "url": "https://api.github.com/user/repos",
+          "query": { "sort": "pushed", "per_page": "30" },
+          "headers": { "Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28" }
+        }
+      },
+      "request": {
+        "url": "https://api.github.com/repos/{owner.login}/{name}/deployments",
+        "query": { "per_page": "10" },
+        "headers": { "Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28" }
+      },
+      "fields": {
+        "nativeId": "id",
+        "name": "{^.full_name} · {environment}",
+        "webUrl": "https://github.com/{^.full_name}/deployments",
+        "detail": "ref",
+        "createdAt": "created_at | date",
+        "updatedAt": "updated_at | date"
+      }
+    }
+  ],
+  "status": {
+    "url": "https://www.githubstatus.com/api/v2/summary.json",
+    "pageUrl": "https://www.githubstatus.com",
+    "indicator": "status.indicator",
+    "description": "status.description",
+    "levelMap": {
+      "none": "OPERATIONAL",
+      "minor": "DEGRADED",
+      "major": "PARTIAL_OUTAGE",
+      "critical": "MAJOR_OUTAGE",
+      "maintenance": "MAINTENANCE"
+    },
+    "components": {
+      "items": "components",
+      "fields": {
+        "id": "id",
+        "name": "name",
+        "status": "status",
+        "parent": "group_id"
+      },
+      "statusMap": {
+        "operational": "OPERATIONAL",
+        "degraded_performance": "DEGRADED",
+        "partial_outage": "PARTIAL_OUTAGE",
+        "major_outage": "MAJOR_OUTAGE",
+        "under_maintenance": "MAINTENANCE"
+      }
+    },
+    "incidents": {
+      "items": "incidents",
+      "fields": {
+        "name": "name",
+        "status": "status",
+        "impact": "impact",
+        "updatedAt": "updated_at | date",
+        "url": "shortlink"
+      },
+      "statusMap": {
+        "none": "OPERATIONAL",
+        "minor": "DEGRADED",
+        "major": "PARTIAL_OUTAGE",
+        "critical": "MAJOR_OUTAGE",
+        "maintenance": "MAINTENANCE"
+      }
+    }
+  },
+  "actions": [
+    {
+      "id": "rerun",
+      "label": "Re-run",
+      "target": "ciRun",
+      "permission": "Actions (read and write)",
+      "request": {
+        "url": "https://api.github.com/repos/{^.owner.login}/{^.name}/actions/runs/{id}/rerun",
+        "method": "POST"
+      }
+    },
+    {
+      "id": "rerun-failed",
+      "label": "Re-run failed jobs",
+      "target": "ciRun",
+      "permission": "Actions (read and write)",
+      "request": {
+        "url": "https://api.github.com/repos/{^.owner.login}/{^.name}/actions/runs/{id}/rerun-failed-jobs",
+        "method": "POST"
+      }
+    }
+  ],
+  "pages": [
+    { "id": "actions", "title": "Actions", "resources": ["ciRun"] },
+    { "id": "deployments", "title": "Deployments", "resources": ["deployment"] },
+    { "id": "repositories", "title": "Repositories", "resources": ["repository"] }
+  ]
+}

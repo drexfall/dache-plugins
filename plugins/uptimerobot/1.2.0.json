@@ -1,0 +1,69 @@
+{
+  "$schema": "../../manifest.schema.json",
+  "manifestVersion": 1,
+  "id": "uptimerobot",
+  "name": "UptimeRobot",
+  "version": "1.2.0",
+  "publisher": "Dache",
+  "dashboardUrl": "https://dashboard.uptimerobot.com",
+  "tokenUrl": "https://dashboard.uptimerobot.com/integrations",
+  "tokenHelp": "Use an account API key from Integrations › API. A monitor-specific key only shows that one monitor. Pausing and resuming monitors needs a main API key, not a read-only one.",
+  "hosts": ["api.uptimerobot.com"],
+  "auth": { "type": "bearer" },
+  "capabilities": ["MONITORS"],
+  "limits": { "requestsPerMinute": 10 },
+  "validate": {
+    "request": { "url": "https://api.uptimerobot.com/v3/user/me" },
+    "displayName": "email | default:UptimeRobot"
+  },
+  "resources": [
+    {
+      "kind": "monitor",
+      "request": {
+        "url": "https://api.uptimerobot.com/v3/monitors",
+        "paging": { "type": "link", "next": "nextLink", "sizeParam": "limit", "size": 200, "maxPages": 5 }
+      },
+      "items": "data",
+      "fields": {
+        "nativeId": "id",
+        "name": "friendlyName",
+        "webUrl": "https://dashboard.uptimerobot.com/monitors/{id}",
+        "url": "url | default:",
+        "status": "status",
+        "uptimePercent": "lastDayUptimes.histogram.uptime | avg",
+        "responseTimes": {
+          "request": {
+            "url": "https://api.uptimerobot.com/v3/monitors/{id}/stats/response-time",
+            "query": { "includeTimeSeries": "true" }
+          },
+          "from": "time_series",
+          "fields": { "at": "timestamp | date", "value": "value" },
+          "permission": "Monitor statistics",
+          "optional": true
+        }
+      },
+      "statusMap": { "UP": "UP", "DOWN": "DOWN", "LOOKS_DOWN": "DOWN", "PAUSED": "PAUSED" }
+    }
+  ],
+  "actions": [
+    {
+      "id": "pause",
+      "label": "Pause",
+      "target": "monitor",
+      "request": {
+        "url": "https://api.uptimerobot.com/v3/monitors/{id}/pause",
+        "method": "POST"
+      }
+    },
+    {
+      "id": "start",
+      "label": "Resume",
+      "target": "monitor",
+      "request": {
+        "url": "https://api.uptimerobot.com/v3/monitors/{id}/start",
+        "method": "POST"
+      }
+    }
+  ],
+  "pages": [{ "id": "monitors", "title": "Monitors", "resources": ["monitor"] }]
+}
