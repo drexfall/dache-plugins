@@ -12,6 +12,7 @@ plugins/<id>/fixtures/       optional recorded responses for `dache-plugin test`
 plugins/<id>/test-settings   optional key=value lines passed as --setting to that test
 manifest.schema.json         JSON Schema for editors
 CLI_VERSION                  the plugin-cli release CI uses
+CLI_SHA256                   that release's zip, which CI checks before running it
 scripts/                     what CI runs
 ```
 
@@ -60,4 +61,4 @@ If the key leaks, skip the wait: ship an app release pinning only the new key, t
 
 ## The CLI
 
-CI downloads `dache-plugin-<version>.zip` from this repo's `cli-<version>` release, built in the Dache repo with `./gradlew :tools:plugin-cli:distZip`. To move CI to a newer CLI, upload a new release and bump `CLI_VERSION`.
+CI downloads `dache-plugin-<version>.zip` from this repo's `cli-<version>` release, built in the Dache repo with `./gradlew :tools:plugin-cli:distZip`, and refuses it unless its SHA-256 matches `CLI_SHA256`. The Publish workflow gives that binary the signing key, so a release asset swapped after review can't run. To move CI to a newer CLI, upload a new release, then bump `CLI_VERSION` and put the zip's SHA-256 (`sha256sum dache-plugin-<version>.zip`) in `CLI_SHA256` in the same pull request.
