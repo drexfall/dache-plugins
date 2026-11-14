@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "name": "app",
+    "full_name": "acme/app",
+    "owner": {
+      "login": "acme"
+    },
+    "html_url": "https://github.com/acme/app",
+    "language": "Kotlin",
+    "pushed_at": "2026-10-31T08:00:00Z"
+  },
+  {
+    "id": 2,
+    "name": "docs",
+    "full_name": "acme/docs",
+    "owner": {
+      "login": "acme"
+    },
+    "html_url": "https://github.com/acme/docs",
+    "language": null,
+    "pushed_at": "2026-10-01T08:00:00Z"
+  }
+]
